@@ -13,7 +13,7 @@ def post_login(request):
             if user.type == 'E':
                 pass
             elif user.type == 'C':
-                pass
+                return redirect('/candidate/')
         else:
             print('User is not authenticated')
     return render(request, 'login.html')

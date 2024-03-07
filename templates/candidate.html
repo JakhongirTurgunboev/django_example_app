@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate</title>
+</head>
+<h1>Jobs for you</h1>
+<body>
+    {% for job in jobs %}
+        <p>Job title:  {{job.title}}</p>
+        <p>Job Poster:  {{job.job_poster.first_name}} {{job.job_poster.last_name}}</p>
+    {% endfor %}
+</body>
+</html>
