@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <h1>Registration</h1>
+    <h3>Username:</h3><input name="username" placeholder="Enter your username">
+    <h3>Password:</h3><input name="password" type="password" placeholder="Enter your password">
+    <h3>First name:</h3><input name="first" placeholder="Enter your first name">
+    <h3>Last name:</h3><input name="last" placeholder="Enter your last name">
+    <h3>User Role. Choose one below</h3>
+        <input type="radio" id="e" name="role" value="E">
+        <label for="e">Employer</label><br>
+        <input type="radio" id="c" name="role" value="C">
+        <label for="c">Candidate</label><br>
+    <button type="submit" id="submit">Submit</button>
+</form>
+
+</body>
+</html>
