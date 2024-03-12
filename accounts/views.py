@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -11,8 +11,10 @@ def post_login(request):
                             password=request.POST.get('password'))
         if user:
             if user.type == 'E':
-                pass
+                login(request, user)
+                return redirect('/vacancy/')
             elif user.type == 'C':
+                login(request, user)
                 return redirect('/candidate/')
         else:
             print('User is not authenticated')
