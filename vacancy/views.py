@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from accounts.models import CustomUser
-from candidate.models import Profile
+from candidate.models import Profile, Click
 from vacancy.models import Vacancy
 
 
@@ -43,3 +44,16 @@ def new_job(request, id):
         )
         return redirect('/vacancy')
     return render(request, 'new_job.html')
+
+def my_job(request, id):
+    try:
+        job_poster = CustomUser.objects.get(pk=id)
+    except CustomUser.DoesNotExist:
+        return HttpResponse("Bunday foydalanuvchi yo'q")
+    vacancies = Vacancy.objects.filter(job_poster=job_poster)
+    return render(request, 'my_job.html', context={'vacancies':vacancies})
+
+
+def clicks(request, id):
+    clicks = Click.objects.filter(vacancy=id)
+    return render(request, 'clicks.html', context={'clicks': clicks})

@@ -8,8 +8,6 @@
 </head>
 <div class="container">
 <h1>Candidate Profiles</h1>
-<a type="button" class="btn btn-primary" href="new-job/{{user.id}}/">Post new job</a>
-<a type="button" class="btn btn-success" href="my-jobs/{{user.id}}/">My jobs</a>
 </div>
 <body>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,11 +24,12 @@
 							<th><span>Title</span></th>
 							<th class="text-center"><span>First name</span></th>
 							<th class="text-center"><span>Last name</span></th>
+                            <th class="text-center"><span>Click text</span></th>
 							<th>&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody>
-                    {% for profile in profiles %}
+                    {% for click in clicks %}
 						<tr>
 							<td>
 								<img class=rounded src="https://bootdey.com/img/Content/avatar/avatar{{forloop.counter}}.png" alt=""
@@ -38,17 +37,22 @@
 							</td>
 							<td>
 								<a href="{{ profile.id }}">
-								{{ profile.title }}
+								{{ click.profile.title }}
 								</a>
 							</td>
 							<td class="text-center">
 								<span>
-								{{ profile.account.first_name }}
+								{{ click.profile.account.first_name }}
 								</span>
 							</td>
 							<td class="text-center">
 								<span>
-								{{ profile.account.last_name }}
+								{{ click.profile.account.last_name }}
+								</span>
+							</td>
+                            <td class="text-center">
+								<span>
+								{{ click.text }}
 								</span>
 							</td>
 							<!--
