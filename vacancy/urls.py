@@ -9,5 +9,4 @@ urlpatterns = [
     path('new-job/<int:id>/', new_job),
     path('my-jobs/<int:id>/', my_job),
     path('clicks/<int:id>/', clicks),
-
 ]
