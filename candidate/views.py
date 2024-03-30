@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import ProfileForm
@@ -43,7 +45,7 @@ def job_detail(request, id):
 def complete_profile(request):
     form = ProfileForm()
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             title = form.cleaned_data["title"]
             experience = form.cleaned_data["experience"]
@@ -52,17 +54,40 @@ def complete_profile(request):
             comf_salary = form.cleaned_data["comf_salary"]
             birth_date = form.cleaned_data["birth_date"]
             tags = form.cleaned_data["tags"]
+            image = form.cleaned_data["image"]
             user = request.user
-            Profile.objects.create(
-                account=user,
-                title = title,
-                experience = experience,
-                location = location,
-                min_salary = min_salary,
-                comf_salary = comf_salary,
-                birth_date = birth_date,
-                tags = tags
-            )
+            try:
+                profile = Profile.objects.get(account=user)
+                profile.title = title
+                profile.experience = experience
+                profile.location = location
+                profile.min_salary = min_salary
+                profile.comf_salary = comf_salary
+                profile.birth_date = birth_date
+                profile.tags = tags
+                profile.image = image
+                profile.save()
+            except Profile.DoesNotExist:
+
+                Profile.objects.create(
+                    account=user,
+                    title = title,
+                    experience = experience,
+                    location = location,
+                    min_salary = min_salary,
+                    comf_salary = comf_salary,
+                    birth_date = birth_date,
+                    tags = tags,
+                    image=image
+                )
         else:
             print("Form validation failed")
     return render(request, "profile.html", {"form": form})
+
+
+@receiver(post_save, sender=Click)
+def my_handler(sender, instance, **kwargs):
+    vacancy = Vacancy.objects.get(pk=instance.vacancy.id)
+    current_one = vacancy.number_of_clicks
+    vacancy.number_of_clicks = current_one + 1
+    vacancy.save()

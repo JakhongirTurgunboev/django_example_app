@@ -1,0 +1,10 @@
+<HttpResponse status_code=200, "text/html; charset=utf-8"><HttpResponseRedirect status_code=302, "text/html; charset=utf-8", url="/candidate/"><HttpResponse status_code=200, "text/html; charset=utf-8"><WSGIRequest: GET '/logout'><WSGIRequest: GET '/logout/'><WSGIRequest: GET '/login/'><WSGIRequest: POST '/login/'><WSGIRequest: GET '/candidate/'>b''b''b''
+b''
+b''
+b'csrfmiddlewaretoken=9kVHN5140BAV7La6BhLGmcO75QYTWRtDQTU8Mdv8VjoIjwmOdCMkSyrIKop9kzuw&username=Adam&password=1234'
+b''
+<WSGIRequest: GET '/logout/'>
+<WSGIRequest: GET '/login/'>
+<WSGIRequest: POST '/login/'>
+<WSGIRequest: GET '/vacancy/'>
+google<WSGIRequest: GET '/vacancy/my-jobs/1/'>

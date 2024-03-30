@@ -26,3 +26,4 @@ class Vacancy(models.Model):
     level = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     tags = models.TextField()
+    number_of_clicks = models.PositiveIntegerField(default=0)

@@ -1,19 +1,8 @@
 from django.db import models
 
 # Create your models here.
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Profile
 from vacancy.models import Vacancy
-
-
-class Profile(models.Model):
-    account = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    experience = models.FloatField(default=0)
-    location = models.CharField(max_length=250)
-    min_salary = models.DecimalField(max_digits=10, decimal_places=2)
-    comf_salary = models.DecimalField(max_digits=10, decimal_places=2)
-    birth_date = models.DateField()
-    tags = models.TextField(blank=True, null=True)
 
 
 class Click(models.Model):

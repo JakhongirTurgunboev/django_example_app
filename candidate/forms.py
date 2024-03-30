@@ -9,3 +9,4 @@ class ProfileForm(forms.Form):
     comf_salary = forms.DecimalField(max_digits=10, decimal_places=2)
     birth_date = forms.DateField()
     tags = forms.CharField()
+    image = forms.ImageField()

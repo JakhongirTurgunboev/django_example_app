@@ -1,4 +1,6 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -35,3 +37,8 @@ def registration(request):
         return redirect('/login')
 
     return render(request, 'registration.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')

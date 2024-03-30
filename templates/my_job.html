@@ -21,6 +21,7 @@
 							<th><span>Job Poster</span></th>
 							<th><span>Location</span></th>
 							<th><span>Level</span></th>
+							<th><span>Number of applicants</span></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -41,6 +42,10 @@
 							</td>
 							<td>
 								<span class="user-subhead">{{job.level}}</span>
+							</td>
+
+							<td>
+								<span class="user-subhead">{{job.number_of_clicks}}</span>
 							</td>
 						</tr>
 					{% endfor %}

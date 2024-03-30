@@ -33,8 +33,17 @@
                     {% for profile in profiles %}
 						<tr>
 							<td>
-								<img class=rounded src="https://bootdey.com/img/Content/avatar/avatar{{forloop.counter}}.png" alt=""
-								 style="width: 80px; height: 80px">
+								{% if profile.image %}
+									<img src="{{ profile.image.url }}" alt="image" style="width: 80px; height: 80px">
+								{% else %}
+									<img class=rounded src="https://bootdey.com/img/Content/avatar/avatar{{forloop.counter}}.png" alt="" style="width: 80px; height: 80px">
+
+								{% endif %}
+
+
+								<!--<img src="http://127.0.0.1:8000/media/media/images/orig.jpg" alt="image" style="width: 80px; height: 80px">
+								<img class=rounded src="https://bootdey.com/img/Content/avatar/avatar{{forloop.counter}}.png" alt="" style="width: 80px; height: 80px">
+								-->
 							</td>
 							<td>
 								<a href="{{ profile.id }}">
